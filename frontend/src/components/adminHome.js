@@ -4,7 +4,7 @@ import ListeProduits from './ListeProduits'
 import {getProducts} from '../actions/productActions'
 
 const AdminHome = () => {
-    const productList = useSelector(state => state.products.productList)
+    const productList = useSelector(state => state.productList)
     const auth = useSelector(state => state.auth)
     const dispatch = useDispatch()
     useEffect(() => {
@@ -14,8 +14,8 @@ const AdminHome = () => {
     
     const handlePageChange = () => {
         dispatch(getProducts())
-        console.log(getProducts())
     }
+    
     return (
         <>
             {auth.isAuth }

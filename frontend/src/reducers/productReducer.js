@@ -13,13 +13,13 @@ const productReducer = (state = initState, { type, payload }) => {
         case GET_PRODUCT_SUCCESS:
             return {
                 ...state,
-                productList: payload.products,
+                productList: payload,
 
             }
         case GET_PRODUCT_COUNT_SUCCESS:
             return {
                 ...state,
-                count: payload.count
+                count: payload.count,
             }
         default:
             return {
