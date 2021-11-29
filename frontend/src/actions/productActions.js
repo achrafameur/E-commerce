@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { 
     ADD_PRODUCT_SUCCESS,
+    GET_PRODUCT_FAILED,
+    GET_PRODUCT_REQUEST,
     GET_PRODUCT_SUCCESS } from '../constants/productConstants'
 import {startLoading,clearError,setError,stopLoading} from './AppStateActions'
 import { prefixe } from '../constants/helpers'
@@ -25,18 +27,21 @@ import { prefixe } from '../constants/helpers'
     export const getProducts = () => async (dispatch) => {
 
         try {
-            dispatch(startLoading("Get Products"))
-            dispatch(clearError())
-            const { data } = await axios.get(`${prefixe}/api/getAllProducts`)
+            dispatch({ type:GET_PRODUCT_REQUEST})
+           
+            // const { data } = await axios.get(`${prefixe}/api/getAllProducts`)
+            const { data } = await axios.get(`http://localhost:5000/api/getAllProducts`)
+            console.log(data)
             dispatch({
                 type: GET_PRODUCT_SUCCESS,
-                payload: data
-            })
-            dispatch(stopLoading())
+                payload: data.produits
+            })   
         }
         catch (err) {
-            dispatch(stopLoading())
-            dispatch(setError(err.response.data.errors))
+            dispatch({ 
+                type: GET_PRODUCT_FAILED,
+                payload : err.response
+            })
         }
     }
     

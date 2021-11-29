@@ -9,7 +9,7 @@
 		"prod": "SET NODE_ENV=PRODUCTION& nodemon server"
 	},
 	"keywords": [],
-	"author": "GuezGuez Med.Tarek",
+	"author": "Achraf Ameur",
 	"license": "ISC",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
